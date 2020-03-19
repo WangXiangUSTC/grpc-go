@@ -28,7 +28,7 @@ package grpclog // import "google.golang.org/grpc/grpclog"
 
 import (
 	"os"
-
+	"runtime/debug"
 	"google.golang.org/grpc/internal/grpclog"
 )
 
@@ -63,6 +63,7 @@ func Warning(args ...interface{}) {
 
 // Warningf logs to the WARNING log. Arguments are handled in the manner of fmt.Printf.
 func Warningf(format string, args ...interface{}) {
+	debug.PrintStack()
 	grpclog.Logger.Warningf(format, args...)
 }
 
